@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<title>
+			{% block title %}{% endblock %}
+			• BlogXpress</title>
+		<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
+		<link rel="preconnect" href="https://fonts.googleapis.com">
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+		<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Poppins:wght@200&display=swap" rel="stylesheet">
+		<link rel="stylesheet" href={{ asset('css/style.css') }}>
+	</head>
+	<body>
+		<nav class="d-flex p-2 bg-body-tertiary align-items-center justify-content-between">
+			<a class="navbar-brand me-0" href={{ path('home') }}>
+				<img src={{ asset('https://mir-s3-cdn-cf.behance.net/project_modules/max_3840/3ea55d116794391.60698dbc5662e.jpg') }} alt="logo blogxpress" width="130" class="rounded">
+			</a>
+			{% if is_granted('ROLE_USER') %}
+				{# Affiche les infos uniquement lorsque l'utilisateur est connecté #}
+				<div class="btn-group dropstart">
+					<button type="button" class="btn btn-outline-secondary rounded-pill dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+						Gestion
+					</button>
+					<ul class="dropdown-menu shadow border-0">
+						<li>
+							<a class="dropdown-item" href={{ path('app_article_index') }}>Les articles</a>
+						</li>
+						<li>
+							<a class="dropdown-item" href={{ path('app_category_index') }}>Les catégories</a>
+						</li>
+						<li>
+							<a class="dropdown-item" href={{ path('app_article_new') }}>Rédiger un article</a>
+						</li>
+						<li>
+							<a href={{ path('app_logout') }} class="dropdown-item">Déconnexion</a>
+						</li>
+					</ul>
+				</div>
+			{% else %}
+				<a href={{ path('app_login') }} class="text-dark">
+					<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewbox="0 0 512 512"><path fill="currentColor" d="M258.9 48C141.92 46.42 46.42 141.92 48 258.9c1.56 112.19 92.91 203.54 205.1 205.1c117 1.6 212.48-93.9 210.88-210.88C462.44 140.91 371.09 49.56 258.9 48Zm126.42 327.25a4 4 0 0 1-6.14-.32a124.27 124.27 0 0 0-32.35-29.59C321.37 329 289.11 320 256 320s-65.37 9-90.83 25.34a124.24 124.24 0 0 0-32.35 29.58a4 4 0 0 1-6.14.32A175.32 175.32 0 0 1 80 259c-1.63-97.31 78.22-178.76 175.57-179S432 158.81 432 256a175.32 175.32 0 0 1-46.68 119.25Z"/><path fill="currentColor" d="M256 144c-19.72 0-37.55 7.39-50.22 20.82s-19 32-17.57 51.93C191.11 256 221.52 288 256 288s64.83-32 67.79-71.24c1.48-19.74-4.8-38.14-17.68-51.82C293.39 151.44 275.59 144 256 144Z"/></svg>
+				</a>
+			{% endif %}
+		</nav>
+
+		{# Contenu des pages qui "extends" le template base.html.twig #}
+		<div class="container"> {% block body %}{% endblock %}</div>
+
+		<footer class="py-3 my-4 border-top">
+			<p class="text-center text-body-secondary">&copy; {{ 'now'|date('Y') }} Blog Recette Cuisine</p>
+			<p class="text-center text-body-secondary">WANG Li</p>
+		</footer>
+
+		<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"></script>
+	</body>
+</html>

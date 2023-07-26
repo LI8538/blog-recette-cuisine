@@ -1,0 +1,27 @@
+{# {% extends 'base.html.twig' %}
+<div>
+<p>{{article.title}}</p>
+<p>{{article.content}}</p>
+<p>{{article.category}}</p>
+<p>{{article.author}}</p>
+<img src="{{ asset('images/articles') }}/{{ article.image }}" >
+</div> #}
+
+{% extends 'base.html.twig' %}
+
+{% block title %}
+	{{ article.title}}
+{% endblock %}
+
+{% block body %}
+	<div class="m-3">
+		<img class="img-fluid rounded shadow" src="{{ asset('images/articles') }}/{{ article.image }}">
+	</div>
+	<article>
+		<h1>rédiger par {{article.title}}</h1>
+	</article>
+    <h6>{{article.author}} | Catégorie : {{article.category}}</h6>
+    <hr>
+	<p>{{article.content}}</p>
+    <a href={{ path('home') }}>retour à l'accueil</a>
+{% endblock %}

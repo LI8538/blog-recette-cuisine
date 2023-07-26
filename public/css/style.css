@@ -1,0 +1,32 @@
+/* Colors Variables */
+:root {
+    --sable: #f7f4f2;
+    --sunset: #ff8c4c;
+    --midnight: #0b3c80;
+    --hot: #ff5c00;
+}
+
+/* Fonts */
+body {
+    font-family: 'Poppins', sans-serif;
+}
+h1, h2, h3, h4, h5, h6 {
+    font-family: 'Bebas Neue', sans-serif;
+}
+
+/* Custom  */
+.bx_cover {
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+}
+
+.bx-meteor {
+    background-image: url('https://resize.prod.femina.ladmedia.fr/rblr/652,438/img/var/2020-03/aliments-confinement.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.bx-meteor h1, .bx-meteor h4 {
+    text-shadow: 0px 0px 3rem rgba(0, 0, 0, 0.35);
+}
